@@ -7,7 +7,9 @@ import { useFormik } from 'formik';
 const Signup = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
+  const signupwithgoogle = ()=>{
+    window.open("http://localhost:5000/auth/google/callback","_self")
+}
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -32,8 +34,7 @@ const Signup = () => {
         if (result.data.message === "Success") {
           localStorage.setItem('token', result.data.token);
           console.log(`Welcome email sent to ${values.email}`);
-          navigate('/posts', { state: { message: `Welcome back, ${username}!` } });
-
+          navigate('/posts', { state: { message: `Welcome back, ${values.username}!` } });
         } else {
           setError(result.data.message);
         }
@@ -44,10 +45,10 @@ const Signup = () => {
   });
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-500 to-indigo-500">
+      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-6">
-          Sign Up to MelodyVerse
+          SignUp to <span className="text-indigo-600">MelodyVerse</span>
         </h2>
         <form onSubmit={formik.handleSubmit}>
           <div className="space-y-4">
@@ -59,11 +60,11 @@ const Signup = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.username}
-                className="appearance-none rounded-md w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="appearance-none rounded-md w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Username"
               />
               {formik.touched.username && formik.errors.username && (
-                <div className="text-red-500 text-sm">{formik.errors.username}</div>
+                <div className="text-red-500 text-sm mt-1">{formik.errors.username}</div>
               )}
             </div>
             <div>
@@ -74,11 +75,11 @@ const Signup = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
-                className="appearance-none rounded-md w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="appearance-none rounded-md w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Email"
               />
               {formik.touched.email && formik.errors.email && (
-                <div className="text-red-500 text-sm">{formik.errors.email}</div>
+                <div className="text-red-500 text-sm mt-1">{formik.errors.email}</div>
               )}
             </div>
             <div>
@@ -89,11 +90,11 @@ const Signup = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.password}
-                className="appearance-none rounded-md w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="appearance-none rounded-md w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Password"
               />
               {formik.touched.password && formik.errors.password && (
-                <div className="text-red-500 text-sm">{formik.errors.password}</div>
+                <div className="text-red-500 text-sm mt-1">{formik.errors.password}</div>
               )}
             </div>
             <div>
@@ -104,11 +105,11 @@ const Signup = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.confirmPassword}
-                className="appearance-none rounded-md w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="appearance-none rounded-md w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Confirm Password"
               />
               {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-                <div className="text-red-500 text-sm">{formik.errors.confirmPassword}</div>
+                <div className="text-red-500 text-sm mt-1">{formik.errors.confirmPassword}</div>
               )}
             </div>
             <div>
@@ -119,7 +120,7 @@ const Signup = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.name}
-                className="appearance-none rounded-md w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="appearance-none rounded-md w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Name (Optional)"
               />
             </div>
@@ -139,25 +140,36 @@ const Signup = () => {
               </label>
             </div>
             {formik.touched.termsAccepted && formik.errors.termsAccepted && (
-              <div className="text-red-500 text-sm">{formik.errors.termsAccepted}</div>
+              <div className="text-red-500 text-sm mt-1">{formik.errors.termsAccepted}</div>
             )}
           </div>
 
-          {error && <div className="text-red-500 text-sm">{error}</div>}
+          {error && <div className="text-red-500 text-sm mt-4">{error}</div>}
 
-          <div>
+          <div className="mt-6">
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Sign Up
             </button>
           </div>
         </form>
-        <p className="text-center mt-4">Already have an account? <Link to="/login" className="text-indigo-600 hover:text-indigo-500">Log In</Link></p>
-</div>
-</div>
-);
+        <p className="text-center mt-6 text-sm text-gray-600">
+          Already have an account? <Link to="/login" className="text-indigo-600 hover:text-indigo-500 font-medium">Log In</Link>
+        </p>
+        <p className="text-center mt-2 text-sm text-gray-600">
+          Or sign up with
+          <button
+            onClick={signupwithgoogle}
+            className="ml-1 text-indigo-600 hover:text-indigo-500 font-medium focus:outline-none"
+          >
+            Google
+          </button>
+        </p>
+      </div>
+    </div>
+  );
 };
 
 export default Signup;
