@@ -23,8 +23,8 @@ const app = express();
 app.use(express.json());
 app.use(cors(
   {
-    origin: ["https://mern-frontend-lac.vercel.app/", "http://localhost:5173"],
-    methods: ["POST", "GET"],
+    origin: ["*"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
   }
 ));
