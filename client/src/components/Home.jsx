@@ -11,8 +11,6 @@ const Home = () => {
         <h2 className="mt-6 text-center text-3xl font-extrabold text-red-900">
           {message || 'Welcome to MelodyVerse'}
         </h2>
-        <div class="text-xl font-medium text-red-600">ChitChat</div>
-        <p class="text-gray-500"> You have a message!</p>
       </div>
     </div>
   );
