@@ -11,17 +11,22 @@ const app = express();
 app.use(express.json());
 app.use(cors(
   {
-    origin: ["https://mern-frontend-lac.vercel.app/"],
+    origin: ["https://mern-frontend-lac.vercel.app/", "http://localhost:5000/signup"],
     methods: ["POST", "GET"],
     credentials: true
   }
 ));
+
 const secretKey = process.env.JWT_SECRET;
 const saltRounds = 10;
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-})
+}).then(() => {
+  console.log("Connected to MongoDB");
+}).catch(error => {
+  console.error("MongoDB connection error:", error);
+});
 
 app.get("/", (req, res) => {
   res.json({
@@ -30,15 +35,14 @@ app.get("/", (req, res) => {
 });
 
 app.post("/signup", async (req, res) => {
-  const { username, email, password, name, profilePicture } = req.body;
+  const { username, email, password, name } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     const newUser = new User({
       username,
       email,
       password: hashedPassword,
-      name,
-      profilePicture
+      name
     });
     await newUser.save();
     const token = jwt.sign({ id: newUser._id }, secretKey, { expiresIn: '1d' });
@@ -78,7 +82,8 @@ app.get("/posts", authenticateToken, async (req, res) => {
     const posts = await Post.find({}).limit(10); 
     res.json(posts);
   } catch (error) {
-    res.status(401).json({ message: "Unauthorized access" });
+    console.error("Posts error:", error);
+    res.status(401).json({ message: "Unauthorized access", error: error.message });
   }
 });
 
