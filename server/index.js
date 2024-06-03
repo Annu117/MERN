@@ -9,8 +9,13 @@ const authenticateToken = require('./middleware/auth');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
-
+app.use(cors(
+  {
+    origin: ["https://mern-api-orcin.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true
+  }
+));
 const secretKey = process.env.JWT_SECRET;
 const saltRounds = 10;
 mongoose.connect(process.env.MONGODB_URI, {
