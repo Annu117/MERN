@@ -1,0 +1,28 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
+import Signup from './components/Signup';
+import Login from './components/Login';
+import Home from './components/Home';
+import PostList from './components/PostList';
+// import VerificationPending from './components/VerificationPending';
+import './index.css';
+
+function App() {
+  return (
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/posts" element={<PostList />} />
+          {/* <Route path="/verification-pending" element= {<VerificationPending />} /> */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="*" element={<Navigate to="/signup" />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
+}
+
+export default App;
