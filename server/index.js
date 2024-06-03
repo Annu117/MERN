@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cors(
   {
-    origin: ["https://mern-api-orcin.vercel.app/"],
+    origin: ["https://mern-frontend-lac.vercel.app/"],
     methods: ["POST", "GET"],
     credentials: true
   }
