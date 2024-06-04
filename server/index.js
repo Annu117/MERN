@@ -273,8 +273,10 @@ passport.deserializeUser((user,done)=>{
 app.get("/auth/google", passport.authenticate("google",{scope:["profile", "email"]}))
 
 app.get("/auth/google/callback", passport.authenticate("google",{
-  successRedirect:"http://localhost:5173/posts",
-  failureRedirect:"http://localhost:5173/signup"
+  // successRedirect:"http://localhost:5173/posts",
+  // failureRedirect:"http://localhost:5173/signup"
+  successRedirect:"https://mern-frontend-lac.vercel.app/posts",
+  failureRedirect:"https://mern-frontend-lac.vercel.app/signup"
 }))
 
 app.listen(5000, () => {
