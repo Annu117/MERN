@@ -11,7 +11,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await axios.post('http://localhost:5000/login', { username, password });
+      // const result = await axios.post('http://localhost:5000/login', { username, password });
+      const result = await axios.post('https://mern-api-sable.vercel.app/login', { username, password });
+
       if (result.data.message === "Success") {
         localStorage.setItem('token', result.data.token);
         navigate('/home', { state: { message: `Welcome back, ${username}!` } });
