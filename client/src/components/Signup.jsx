@@ -8,7 +8,8 @@ const Signup = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const signupwithgoogle = ()=>{
-    window.open("http://localhost:5000/auth/google/callback","_self")
+    // window.open("http://localhost:5000/auth/google/callback","_self")
+    window.open("https://mern-api-sable.vercel.app/auth/google/callback","_self")
 }
   const formik = useFormik({
     initialValues: {
