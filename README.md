@@ -105,12 +105,12 @@
 
 ## Screenshots
 <div align="center">
-    <img width="440" src="https://github.com/Annu117/MERN/assets/108427028/42fe52ce-929f-4894-a9eb-4b1c6e7cd0be">
-    <img width="440" src="https://github.com/Annu117/MERN/assets/108427028/ec982f4a-27ea-4d27-b652-97a4dc485040">
+    <img width="400" src="https://github.com/Annu117/MERN/assets/108427028/42fe52ce-929f-4894-a9eb-4b1c6e7cd0be">
+    <img width="400" src="https://github.com/Annu117/MERN/assets/108427028/ec982f4a-27ea-4d27-b652-97a4dc485040">
 </div>
 <div align="center">
-    <img width="440" src="https://github.com/Annu117/MERN/assets/108427028/a21c5b61-6fb3-4496-b722-b514c3cae760">
-    <img width="440" src="https://github.com/Annu117/MERN/assets/108427028/56d043d3-6971-4e0c-aefb-1ccc6c1d87fa">
+    <img width="400" src="https://github.com/Annu117/MERN/assets/108427028/a21c5b61-6fb3-4496-b722-b514c3cae760">
+    <img width="400" src="https://github.com/Annu117/MERN/assets/108427028/56d043d3-6971-4e0c-aefb-1ccc6c1d87fa">
 </div>
 
 ## Video
