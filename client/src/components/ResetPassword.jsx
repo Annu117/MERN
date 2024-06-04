@@ -16,7 +16,9 @@ const ResetPassword = () => {
       return;
     }
     try {
-      const result = await axios.post(`http://localhost:5000/reset/${token}`, { password });
+      // const result = await axios.post(`http://localhost:5000/reset/${token}`, { password });
+      const result = await axios.post(`https://mern-api-sable.vercel.app/reset/${token}`, { password });
+
       if (result.data.message === 'Password has been reset') {
         setMessage('Password has been reset successfully');
         setError('');
