@@ -10,7 +10,9 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await axios.post('http://localhost:5000/forgot-password', { email });
+      // const result = await axios.post('http://localhost:5000/forgot-password', { email });
+      const result = await axios.post('https://mern-api-sable.vercel.app/forgot-password', { email });
+
       if (result.data.message === "Success") {
         setMessage('Password reset link sent! Please check your email.');
         setError('');
