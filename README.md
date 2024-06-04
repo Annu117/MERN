@@ -11,7 +11,7 @@
 1. **Clone the repository**:
    ```sh
    git clone https://github.com/Annu117/MERN.git
-   cd MERN
+   cd MelodyVerse
    ```
 
 2. **Install dependencies for the server**:
