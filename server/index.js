@@ -31,7 +31,8 @@ app.use(cors(
 
 const secretKey = process.env.JWT_SECRET;
 const saltRounds = 10;
-mongoose.connect(process.env.MONGODB_URI, {
+// mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect("mongodb+srv://user2000:1111@register.eggxwut.mongodb.net/?retryWrites=true&w=majority&appName=Register", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
