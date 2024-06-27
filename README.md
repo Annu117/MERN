@@ -80,15 +80,6 @@
 - **Token Validation**: Validates JWT tokens in protected routes to ensure user authentication.
 - **Token Refresh**: Implements robust token refresh mechanisms.
 
-### Best Practices
-
-- **Input Validation and Sanitization**: Prevents vulnerabilities by enforcing input validation and sanitization.
-- **Protection Against Attacks**: Protects against SQL injection, XSS, and other common attacks.
-- **Secure Password Storage**: Uses bcrypt for secure password hashing.
-- **Error Handling**: Implements proper error handling and provides informative error messages.
-- **Environment Variables**: Uses environment variables for sensitive information.
-- **Session and Token Management**: Handles sessions and token expiration effectively.
-
 ## Additional Features
 
 - **Password Reset**: Implemented functionality for users to reset their passwords.
